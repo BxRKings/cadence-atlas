@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Cadence Atlas is a visual harmony coach, song starter, and Audiotool Nexus timeline writer."
+    />
+    <meta name="theme-color" content="#090c14" />
+    <title>Cadence Atlas — see where harmony wants to go</title>
+  </head>
+  <body>
+    <div class="page-glow" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Cadence Atlas home">
+        <span class="brand-mark" aria-hidden="true">CA</span>
+        <span>Cadence Atlas</span>
+      </a>
+      <div class="header-actions">
+        <span class="sdk-state" id="sdkState"><i></i> Nexus check queued</span>
+        <button class="button button-quiet" id="openNexus" type="button">Send to Audiotool</button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">A visual harmony instrument for Audiotool</p>
+          <h1>Hear the pull.<br /><em>See the path.</em></h1>
+          <p class="hero-lede">
+            Turn a mood into a chord route, learn why it moves, then write the playable notes into
+            an Audiotool project through the open Nexus SDK.
+          </p>
+          <div class="hero-actions">
+            <button class="button button-primary" id="playButton" type="button">
+              <span aria-hidden="true">▶</span> Play the route
+            </button>
+            <button class="button button-secondary" id="shuffleButton" type="button">New route</button>
+          </div>
+        </div>
+        <div class="hero-note" aria-label="Project features">
+          <span>01</span>
+          <p>One musical idea crosses song starting, composition, learning, play, and DAW integration.</p>
+          <div class="hero-note-grid">
+            <b>7</b><small>scale degrees</small><b id="heroBars">4</b><small>playable bars</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="workbench" aria-label="Harmony workbench">
+        <aside class="controls-panel">
+          <div class="panel-heading">
+            <span>Set the compass</span>
+            <small>01 / INPUT</small>
+          </div>
+
+          <label class="field-label" for="keySelect">Key centre</label>
+          <select id="keySelect" class="select-control"></select>
+
+          <span class="field-label">Mode</span>
+          <div class="segment" role="group" aria-label="Scale mode">
+            <button type="button" data-mode="major" class="active">Major</button>
+            <button type="button" data-mode="minor">Minor</button>
+          </div>
+
+          <label class="field-label" for="bpmInput">Tempo</label>
+          <div class="tempo-control">
+            <input id="bpmInput" type="range" min="60" max="150" value="104" />
+            <output id="bpmOutput" for="bpmInput">104 BPM</output>
+          </div>
+
+          <span class="field-label">Starting route</span>
+          <div class="recipe-list" id="recipeList"></div>
+
+          <div class="control-note">
+            <span class="note-icon" aria-hidden="true">↗</span>
+            <p><b>Nothing is a black box.</b> Every suggestion comes from visible scale degrees, tension, cadence, and voice-leading rules.</p>
+          </div>
+        </aside>
+
+        <div class="map-panel">
+          <div class="map-toolbar">
+            <div>
+              <p class="eyebrow">Live harmonic route</p>
+              <h2 id="routeTitle">C major · Golden Hour</h2>
+            </div>
+            <div class="score-dial" id="scoreDial" aria-label="Progression score">
+              <strong id="scoreValue">0</strong><span>/100</span>
+            </div>
+          </div>
+
+          <div class="atlas" id="atlas" aria-label="Harmonic map"></div>
+
+          <div class="progression-heading">
+            <span>Your progression</span>
+            <div>
+              <button class="text-button" id="removeChord" type="button">− bar</button>
+              <button class="text-button" id="addChord" type="button">+ bar</button>
+            </div>
+          </div>
+          <div class="chord-strip" id="chordStrip"></div>
+
+          <div class="analysis-grid" id="analysisGrid"></div>
+        </div>
+      </section>
+
+      <section class="challenge-section">
+        <div class="challenge-number">02</div>
+        <div class="challenge-copy">
+          <p class="eyebrow">Resolution run</p>
+          <h2 id="challengeTitle">Perfect return</h2>
+          <p id="challengePrompt">Finish with V → I for an authentic cadence.</p>
+        </div>
+        <div class="challenge-result" id="challengeResult">
+          <span>Current route</span>
+          <strong>Keep shaping</strong>
+        </div>
+        <button class="button button-secondary" id="nextChallenge" type="button">Next challenge</button>
+      </section>
+
+      <section class="proof-section">
+        <div class="proof-copy">
+          <p class="eyebrow">From idea to session</p>
+          <h2>A musical sketch that arrives as editable notes.</h2>
+          <p>
+            Cadence Atlas creates a Heisenberg synth, mixer channel, note track, region, and every
+            chord tone as native Nexus entities. The browser preview and MIDI export work without an account.
+          </p>
+          <div class="proof-actions">
+            <button class="button button-primary" id="downloadMidi" type="button">Download MIDI</button>
+            <button class="button button-secondary" id="validateNexus" type="button">Run Nexus proof</button>
+          </div>
+        </div>
+        <div class="entity-receipt" aria-live="polite">
+          <div class="receipt-top"><span>NEXUS / LOCAL RECEIPT</span><span id="receiptStatus">WAITING</span></div>
+          <pre id="receiptOutput">Choose “Run Nexus proof” to build this route in an official validated offline document.</pre>
+          <div class="receipt-foot"><span>SDK @audiotool/nexus</span><span>NO API KEY</span></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Cadence Atlas</span>
+      <p>Original competition prototype · synthetic musical data · no generated audio or external AI API</p>
+      <a href="https://developer.audiotool.com/" target="_blank" rel="noreferrer">Nexus SDK ↗</a>
+    </footer>
+
+    <dialog id="nexusDialog" class="nexus-dialog">
+      <form method="dialog" class="dialog-shell">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Live Audiotool handoff</p>
+            <h2>Write this route to a project</h2>
+          </div>
+          <button class="close-button" value="cancel" aria-label="Close">×</button>
+        </div>
+        <p class="dialog-intro">
+          Register this page as an Audiotool application with <code>project:write</code>, then paste
+          its public client ID and a project URL. OAuth stays with Audiotool; Cadence Atlas never asks for or stores a password or token.
+        </p>
+        <label class="field-label" for="clientIdInput">Audiotool client ID</label>
+        <input class="text-input" id="clientIdInput" autocomplete="off" placeholder="Public OAuth client ID" />
+        <label class="field-label" for="projectUrlInput">Audiotool project URL</label>
+        <input class="text-input" id="projectUrlInput" type="url" placeholder="https://beta.audiotool.com/studio?project=…" />
+        <div class="redirect-box"><span>REGISTERED REDIRECT</span><code id="redirectValue"></code></div>
+        <p class="dialog-status" id="dialogStatus" role="status">Ready when both fields are complete.</p>
+        <div class="dialog-actions">
+          <button class="button button-secondary" value="cancel">Cancel</button>
+          <button class="button button-primary" id="writeLive" type="button">Authorize and write</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
